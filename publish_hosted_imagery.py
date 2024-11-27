@@ -80,9 +80,10 @@ def publish_hosted_imagery_from_crf(crf_path, imagery_layer_name):
     
     source = upload_crf
     target = os.path.join(acs_folder, target_connection_file, folder_name, crf_name)
-    arcpy.management.TransferFiles(source, target)
-    print(target)
-    print(source)
+    with arcpy.EnvManager(parallelProcessingFactor="90%"):
+        arcpy.management.TransferFiles(source, target)
+        print(target)
+        print(source)
 
     data_url = access_url.split('?')[0] + "/" + folder_name + "/" + crf_name
     print(data_url)
@@ -99,9 +100,9 @@ def publish_hosted_imagery_from_crf(crf_path, imagery_layer_name):
                                 output_name=imagery_layer_name,
                                 context={"compression":"LERC 0"},
                                 gis=gis)
-    ImageryLayer.update(item_properties={"tags": "climate, ocean, CMIP6, SSP3-7.0, NOAA",
-                                        "snippet": "This layer is from NOAA's Climate Change Web Portal.  It was provided by Jamie Scott",
-                                        "description": "This layer is from NOAA's Climate Change Web Portal, Accessed on 11/21/2024. URL = https://psl.noaa.gov/ipcc/cmip6/ This hosted imagery layer was published from a CRF file using the ArcGIS API for Python."})              
+    # ImageryLayer.update(item_properties={"tags": "climate, ocean, CMIP6, SSP3-7.0, NOAA",
+    #                                     "snippet": "This layer is from NOAA's Climate Change Web Portal.  It was provided by Jamie Scott",
+    #                                     "description": "This layer is from NOAA's Climate Change Web Portal, Accessed on 11/21/2024. URL = https://psl.noaa.gov/ipcc/cmip6/ This hosted imagery layer was published from a CRF file using the ArcGIS API for Python."})              
     return ImageryLayer
 
 # # Example usage
