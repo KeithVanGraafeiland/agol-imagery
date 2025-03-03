@@ -1,7 +1,0 @@
-title = ""
-snippet = ""
-description = "This layer is from NOAA's Climate Change Web Portal.  It was provided by Jamie Scott"
-tags = "climate, ocean, CMIP6, SSP3-7.0, NOAA"
-accessInformation = ""
-thumbnail = ""
-credits = ""
