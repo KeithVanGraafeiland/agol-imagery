@@ -163,3 +163,4 @@ cython_debug/
 credentials.py
 esri_oceans_credentials.py
 keith_oceans_credentials.py
+agol_credentials.py
